@@ -6,6 +6,6 @@ COPY . .
 RUN go mod download
 RUN go build -o /go/bin/app/main cmd/main.go
 
-EXPORT 3000
+EXPOSE 3000
 
 ENTRYPOINT ["/go/bin/app/main"]
