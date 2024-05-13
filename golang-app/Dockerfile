@@ -8,4 +8,4 @@ RUN go build -o /go/bin/app/main cmd/main.go
 
 EXPORT 3000
 
-CMD ["/go/bin/app/main"]
+ENTRYPOINT ["/go/bin/app/main"]

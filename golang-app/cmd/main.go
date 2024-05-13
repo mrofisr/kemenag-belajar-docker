@@ -43,6 +43,9 @@ func main() {
 	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("OK"))
 	})
+	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Welcome to Kemenag API"))
+	})
 	// Run the server
 	fmt.Println("Server running on port 3000")
 	http.ListenAndServe(":3000", r)
