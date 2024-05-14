@@ -8,6 +8,7 @@ services:
     restart: always
     networks:
       - laravel-network
+
   nginx:
     image: nginx:1.21.3
     container_name: nginx-reverse-proxy
