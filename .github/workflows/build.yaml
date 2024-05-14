@@ -1,0 +1,27 @@
+name: Build Docker Images
+on:
+  push:
+    branches:
+      - main
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Docker Images
+        run: |
+          cd laravel
+          docker build \
+          -t ghcr.io/mrofisr/laravel-app:latest .
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u mrofisr --password-stdin
+      - name: Push Docker Images
+        run: |
+          docker push ghcr.io/mrofisr/laravel-app:latest
