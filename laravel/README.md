@@ -68,3 +68,15 @@ curl http://localhost:8000
 ```bash
 docker stats web-app-1
 ```
+
+## Docker login to ghcr.io
+
+```bash
+docker login ghcr.io
+```
+
+## Docker tag to ghcr.io
+
+```bash
+docker tag web-app:latest ghcr.io/username/web-app:latest
+```
