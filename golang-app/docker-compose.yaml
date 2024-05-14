@@ -45,6 +45,7 @@ services:
 
 volumes:
   postgres_data: # Volume
+    name: postgres_data
 
 networks:
   api-network: # Network

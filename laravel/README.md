@@ -80,3 +80,9 @@ docker login ghcr.io
 ```bash
 docker tag web-app:latest ghcr.io/username/web-app:latest
 ```
+
+## Running docker-compose
+
+```bash
+docker-compose up -d
+```

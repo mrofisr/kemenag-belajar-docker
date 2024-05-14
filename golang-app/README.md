@@ -51,3 +51,15 @@ docker logs golang-app-1
 ```bash
 curl http://localhost:3000/person
 ```
+
+## Running docker-compose
+
+```bash
+docker-compose up -d
+```
+
+## Check Usage of Docker Container
+
+```bash
+docker stats golang-app-1
+```
