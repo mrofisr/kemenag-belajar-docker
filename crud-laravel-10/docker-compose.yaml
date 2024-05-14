@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crud-laravel-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".env.container:/var/www/html/.env"
+    restart: always
+    networks:
+      - crud-laravel-network
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_laravel_crud
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - "./db_laravel_crud.sql:/docker-entrypoint-initdb.d/db_laravel_crud.sql"
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - crud-laravel-network
+
+networks:
+  crud-laravel-network:
+    name: crud-laravel-network
+    driver: bridge
