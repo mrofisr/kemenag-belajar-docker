@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-app
+  namespace: app
+  labels:
+    app: lara-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lara-app
+  template:
+    metadata:
+      labels:
+        app: lara-app
+    spec:
+      volumes:
+        - name: laravel-app-config
+          configMap:
+            name: laravel-app-config
+      containers:
+        - name: laravel-app
+          image: ghcr.io/mrofisr/web-app-laravel:1.0.0
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: laravel-app-config
+              mountPath: /var/www/html/.env
+              subPath: .env

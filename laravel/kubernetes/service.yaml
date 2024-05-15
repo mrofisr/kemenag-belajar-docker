@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: laravel-app
+  namespace: app
+  labels:
+    app: lara-app
+spec:
+  selector:
+    app: lara-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: LoadBalancer
