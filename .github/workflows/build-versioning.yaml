@@ -2,7 +2,7 @@ name: Build Docker Images with Versioning
 on:
   push:
     tags:
-      - *-rc
+      - "*-rc"
 
 env:
   RELEASE_VERSION: ${{ steps.vars.outputs.tag }} # Get tag
