@@ -5,7 +5,7 @@ on:
       - "*-rc"
 
 env:
-  RELEASE_VERSION: ${{ steps.vars.outputs.tag }} # Get tag
+  RELEASE_VERSION: ${{  github.ref_name }}
 
 jobs:
   build:
