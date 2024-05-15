@@ -41,8 +41,8 @@ docker run -it \
 -d \
 -p 8000:8000 \
 --volume "./.env:/var/www/html/.env" \
---name web-app-1 \
-web-app:latest
+--name laravel-app-1 \
+ghcr.io/mrofisr/laravel-app:latest
 ```
 
 ## Check Docker Container
